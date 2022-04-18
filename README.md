@@ -1,0 +1,2 @@
+# Machine_Learning_Titanic_Survival_Prediction_Basic_Model_EDA_and_Deploy
+Titanic Survival Prediction EDA using Jupyter Notebook and Deployment using Flask
