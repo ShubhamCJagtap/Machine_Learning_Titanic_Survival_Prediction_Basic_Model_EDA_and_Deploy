@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Survival prediction</title>
+    <link rel="stylesheet" href="/static/CSS/style.css">
+</head>
+
+<body>
+    <section class="header">
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--main">
+                    Titanic Survival prediction
+                </span>
+                <span class="heading-primary--sub">
+                    By Shubham Jagtap
+                </span>
+            </h1>
+        </div>
+    </section>
+
+    <div class="form">
+        <div class="n">Please fill the form and check survival prediction</div>
+        <form action="/" method="POST">
+            <div class="row">
+                <label for="Salutation" class="col-1-of-4 label-name">First Name</label>
+                <select id="Salutation" name="Salutation" class="col-1-of-4">
+                            <option value="None" selected="selected">Select Salutation</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Master">Master</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                <input type="text" id="fname" class="col-2-of-4" name="firstname" placeholder="Your name..">
+
+            </div>
+            <div class="row">
+                <label for="Gender" class="col-1-of-4 label-name">Gender</label>
+                <select id="Gender" name="Gender" class="col-1-of-4">
+                    <option value="None" selected="selected">Please Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <label for="Age" class="col-1-of-4 label-name">Age</label>
+                <input type="integer" id="Age" class="col-1-of-4" name="Age" placeholder="Age">
+            </div>
+
+            <div class="row">
+                <label for="family_size" class="col-2-of-4 label-name">Family Members Onboard</label>
+                <select id="family_size" name="family_size" class="col-2-of-4">
+                    <option value="0" selected="selected">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">6 +</option>
+                </select>
+
+            </div>
+            <div class="row">
+                <label for="Embarked" class="col-1-of-4 label-name">Embarked</label>
+                <select id="Embarked" name="Embarked" class="col-1-of-4">
+                    <option value="None" selected="selected">Please Select</option>
+                    <option value="Southampton">Southampton</option>
+                    <option value="Cherbourg">Cherbourg</option>
+                    <option value="Queenstown">Queenstown</option>
+                </select>
+
+                <label for="pclass" class="col-1-of-4 label-name">passenger class</label>
+                <select id="pclass" name="pclass" class="col-1-of-4">
+                    <option value="None" selected="selected">Please Select</option>
+                    <option value="Class 1">Class 1</option>
+                    <option value="Class 2">Class 2</option>
+                    <option value="Class 3">Class 3</option>
+                </select>
+
+            </div>
+            <div class="row">
+                <label for="fare" class="col-1-of-2 label-name">Fare</label>
+                <select id="fare" name="fare" class="col-1-of-4">
+                    <option value="None" selected="selected">Please Select</option>
+                    <option value="0 $ : 8 $">0 $ : 8 $ (for class 2 and class 3)</option>
+                    <option value="8 $ : 15 $">8 $ : 15 $ (for class 2 and class 3)</option>
+                    <option value="15 $ : 31 $">15 $ : 31 $ (for class 1 and class 2)</option>
+                    <option value="More than 31$">More than 31 $ (upto 500 $) for class 1 </option>
+                </select>
+            </div>
+
+            <input type="submit" class="btn btn--white btn--animated" value="Predict">
+            <input type="reset" class="btn btn--white btn--animated" value="Reset">
+            <!--<div class="n">
+               
+
+            </div>-->
+        </form>
+    </div>
+    {%if result=='Fault'%}
+    <div class="prediction">
+        <div class="prediction-result">
+
+            {%if Salutation=='Fault'%}
+            Please select Salutation
+            {%elif gender=='Fault'%}
+            Please select Gender
+            {%elif age=='Fault'%}
+            Please Enter age in positive Numeber
+            {%elif Embarked=='Fault'%}
+            Please select Embarked
+            {%elif pclass=='Fault'%}
+            Please select Passenger Class
+            {%elif fare=='Fault'%}
+            Please select fare
+            {%endif%}
+        </div>
+    </div>
+    {%elif result==1%}
+    <div class="prediction">
+        <div class="prediction-result">
+
+            <h1>
+                Great! Survived! <br>
+                
+            </h1>
+        </div>
+    </div>
+    <div class="details">
+        <div class="part_1">
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{Salutation}} {{firstname}}</span>
+                <span class="col-2-of-4">Name</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{gender}}</span>
+                <span class="col-2-of-4">Gender</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{age}}</span>
+                <span class="col-2-of-4">Age</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{family_size}}</span>
+                <span class="col-2-of-4">Family Members Onboard</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{Embarked}}</span>
+                <span class="col-2-of-4">Embarked</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{pclass}}</span>
+                <span class="col-2-of-4">Passenger Class</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{fare}}</span>
+                <span class="col-2-of-4">Fare</span>
+                <hr>
+            </div>
+        </div>
+    </div>
+    {%elif result ==0%} 
+    <div class="prediction">
+        <div class="prediction-result">
+
+            <h1>
+                Oh No!! Not Survived! <br>
+                
+            </h1>
+        </div>
+    </div>
+    <div class="details">
+        <div class="part_1">
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{Salutation}} {{firstname}}</span>
+                <span class="col-2-of-4">Name</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{gender}}</span>
+                <span class="col-2-of-4">Gender</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{age}}</span>
+                <span class="col-2-of-4">Age</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{family_size}}</span>
+                <span class="col-2-of-4">Family Members Onboard</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{Embarked}}</span>
+                <span class="col-2-of-4">Embarked</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{pclass}}</span>
+                <span class="col-2-of-4">Passenger Class</span>
+                <hr>
+            </div>
+            <div class="row">
+                <span class="details_main col-2-of-4">: {{fare}}</span>
+                <span class="col-2-of-4">Fare</span>
+                <hr>
+            </div>
+        </div>
+    </div>
+    {%else%} 
+    <div class="prediction">
+        <div class="prediction-result">
+            <h1>
+                Prediction Result 
+            </h1>
+        </div>
+    </div>
+    {%endif%}
+</body>
+
+</html>

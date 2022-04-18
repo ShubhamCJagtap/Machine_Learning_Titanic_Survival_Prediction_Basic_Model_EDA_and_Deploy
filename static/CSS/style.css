@@ -1,0 +1,319 @@
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    transition: all 0.5s;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover::after {
+    transform: scaleX(1.5) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn:active {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn--white {
+    background-color: aliceblue;
+    color: grey;
+    border-radius: 5rem;
+}
+
+.btn--white::after {
+    background-color: aliceblue;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn--animated {
+    animation: moveInButton 0.5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
+
+.row {
+    max-width: 114rem;
+    margin: 0 auto;
+}
+
+.row:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row [class^="col-"] {
+    float: left;
+}
+
+.row [class^="col-"]:not(:last-child) {
+    margin-right: 3rem;
+}
+
+.row .col-1-of-2 {
+    width: calc((100% - 3rem) / 2);
+}
+
+.row .col-1-of-3 {
+    width: calc((100% - 2 * 3rem) / 3);
+}
+
+.row .col-1-of-4 {
+    width: calc((100% - 3 * 3rem) / 4);
+}
+
+.row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 3rem) / 3) + 3rem);
+}
+
+.row .col-2-of-4 {
+    width: calc((2 * (100% - 3 * 3rem) / 4) + 3rem);
+}
+
+.row .col-3-of-4 {
+    width: calc((3 * (100% - 3 * 3rem) / 4) + 2 * 3rem);
+}
+
+@keyframes moveInLeft {
+    /*Animation to Outdoor name */
+    0% {
+        /*At the beginning of the animation*/
+        opacity: 0;
+        transform: translate(-10rem);
+    }
+    90% {
+        transform: translate(3rem);
+    }
+    100% {
+        /*At the end of the animation*/
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /*Animation to Outdoor name */
+    0% {
+        /*At the beginning of the animation*/
+        opacity: 0;
+        transform: translate(10rem);
+    }
+    90% {
+        transform: translate(-3rem);
+    }
+    100% {
+        /*At the end of the animation*/
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInButton {
+    /*Animation to Outdoor name */
+    0% {
+        /*At the beginning of the animation*/
+        opacity: 0;
+        transform: translateY(5rem);
+    }
+    100% {
+        /*At the end of the animation*/
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.header {
+    height: 70vh;
+    background-image: linear-gradient(to bottom right, blue, rgba(74, 207, 240, 0.733), rgba(151, 234, 255, 0.603)), url("../../static/titanic.jpg");
+    position: relative;
+    background-size: cover;
+}
+
+.header__text-box {
+    position: absolute;
+    background-color: transparent;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    text-align: center;
+}
+
+.heading-primary {
+    color: #fffb00;
+    text-transform: uppercase;
+}
+
+.heading-primary--main {
+    display: block;
+    font-size: 6rem;
+}
+
+.heading-primary--sub {
+    color: #e22c2c;
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1.95rem;
+}
+
+.prediction {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+.prediction-result {
+    font-size: 3rem;
+    background-image: linear-gradient(to right, #0a29af, #00aeff, #0a29af, #00aeff, #001aff);
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+input[type=text],
+input[type=integer],
+select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.label-name {
+    color: black;
+    text-align: right;
+    font-size: 2rem;
+    margin: 8px 0;
+    padding-top: 5px;
+    text-transform: uppercase;
+}
+
+input[type=submit] {
+    margin: 0 auto;
+    width: 50%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    letter-spacing: 2rem;
+    text-transform: uppercase;
+    margin-right: 10rem;
+}
+
+input[type=reset] {
+    margin: 0 auto;
+    width: 18%;
+    background-color: rgba(255, 8, 0, 0.671);
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 2.5rem;
+    letter-spacing: .5rem;
+    text-transform: uppercase;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.form {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+.n {
+    width: 80%;
+    font-size: 3rem;
+    background-image: linear-gradient(to right, #0a29af, #00aeff, #0a29af, #00aeff, #001aff);
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    /*Forced Inheritance from body*/
+}
+
+html {
+    font-size: 62.5%;
+    /* this is saying font size 10px i.e. 62.5% of 16px = 10px*/
+    /*font-size: 100%;/*  /*By defaut 16px is considered*/
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    /*font-size: 16px;*/
+    line-height: 1.7;
+    color: #f1f1f1;
+    padding: 3rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.details {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 20px;
+    background-image: linear-gradient(to right, #000000, #1a252b, #666d8b, #000000, #191b2e);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 2rem;
+    margin-bottom: 6rem;
+}
+
+.details_main {
+    text-align: right;
+}
